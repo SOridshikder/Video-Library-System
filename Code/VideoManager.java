@@ -14,10 +14,10 @@ public class VideoManager
 	
 	public void setInitialVideoList()
 	{
-		VideoData video1 = new VideoData(1, "video1.mp4", true, 1, "Mr. X" ); //true indicate that the video was borrowed
-		VideoData video2 = new VideoData(2, "video2.mp4", false, 5, "Mr. Y" ); 
-		VideoData video3 = new VideoData(3, "video3.mp4", false, 0, "");
-		VideoData video4 = new VideoData(4, "video4.mp4", false, 5, "Mr. ppp");
+		VideoData video1 = new VideoData(1, "video1", true, 1, "Mr. X" ); //true indicate that the video was borrowed
+		VideoData video2 = new VideoData(2, "video2", false, 5, "Mr. Y" ); 
+		VideoData video3 = new VideoData(3, "video3", false, 0, "");
+		VideoData video4 = new VideoData(4, "video4", false, 5, "Mr. ppp");
 		 
 		video_Data.add(video1);
 		video_Data.add(video2);
@@ -25,7 +25,7 @@ public class VideoManager
 		video_Data.add(video4);
 		
 		String formattedDateTime = (" 2024-06-01 23:25:30");
-		Borrower borrowUser = new Borrower(1,"Mr.X", formattedDateTime);
+		Borrower borrowUser = new Borrower(1,"Mr.X", formattedDateTime," ");
 		borrower_Data.add(borrowUser);
 	}
 	
@@ -96,7 +96,7 @@ public class VideoManager
 		{
 			if (video_Data.size()> 0) 
 			{
-				if(video_Data.get(i).getVideoTitle().equalsIgnoreCase(video_title + ".mp4"))
+				if(video_Data.get(i).getVideoTitle().equalsIgnoreCase(video_title ))
 				{
 					System.out.println(" this video name already exist!!!");
 						//System.out.println("----New video added successfully!!!----");
@@ -116,7 +116,7 @@ public class VideoManager
 				}
 			}
 		}
-		video_title = video_title + ".mp4";
+		video_title = video_title;
 		VideoData video = new VideoData(video_Data.size(), video_title, false, 0, "" );
 		video_Data.add(video);
 		
@@ -134,6 +134,7 @@ public class VideoManager
 			videoInfo();
 		}  
 	}
+	
 	
 	public void deleteVideo()
 	{
@@ -173,6 +174,7 @@ public class VideoManager
 		}
 	}
 	
+	
 	public void borrowVideo()
 	{
 		System.out.print("Please enter the Video Title to be Borrowed:");//Video title
@@ -197,7 +199,7 @@ public class VideoManager
 				// Format the current date and time
 				String formattedDateTime = currentDateTime.format(formatter);
 				
-				Borrower borrowUser = new Borrower(borrower_Data.size(),borrower_name, formattedDateTime);
+				Borrower borrowUser = new Borrower(borrower_Data.size(),borrower_name, formattedDateTime,"");
 				borrower_Data.add(borrowUser);
 				
 				// Print the current date and time
@@ -249,7 +251,7 @@ public class VideoManager
 			if(!isExistUpdateName)
 			{
 				int i = current_search_index;
-				video_Data.get(i).setVideoTitle(update_video_title + ".mp4");
+				video_Data.get(i).setVideoTitle(update_video_title);
 				System.out.print("Video file name updated successfully!!!:");
 			}
 			else
@@ -282,7 +284,7 @@ public class VideoManager
 		{
 			if (video_Data.size()> 0) 
 			{
-				if(video_Data.get(i).getVideoTitle().equalsIgnoreCase(video_title + ".mp4"))
+				if(video_Data.get(i).getVideoTitle().equalsIgnoreCase(video_title))
 				{
 					current_search_index = i;
 					isFound = true;
@@ -320,9 +322,13 @@ public class VideoManager
 			}
 			else
 			{
-				System.out.println("Could not found the video you entered!!!");
+
 				showVideoSub(idx+1);
 			}
+		}
+		else
+		{
+			System.out.println("Could not found the video you entered!!!");	
 		}
 		
 		System.out.println("");

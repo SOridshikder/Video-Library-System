@@ -9,7 +9,7 @@ public class VideoLibrarySystemMain
 		System.out.println("********************************************************"); 
 		System.out.println("           Welcome To The Video Library System          "); 
 		System.out.println("********************************************************"); 
-		displayMainMenu();
+		main.displayMainMenu();
 	}
 	
 	
@@ -31,7 +31,8 @@ public class VideoLibrarySystemMain
 		System.out.println("Press 5 to Search video record");
 		System.out.println("Press 6 to Report of available videos");
         System.out.println("Press 7 to Navigate The Program");
-		System.out.println("Press 8 to Exit The Program");
+		System.out.println("Press 8 to Return Any Book");
+		System.out.println("Press 9 to Exit The Program");
         System.out.println(  "---------------------------------------------------------");
         Scanner scan = new Scanner(System.in);
         int input=0;
